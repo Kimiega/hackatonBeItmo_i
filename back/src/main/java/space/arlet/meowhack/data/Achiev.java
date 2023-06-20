@@ -27,7 +27,5 @@ public class Achiev {
 
     private float receivingPercent;
 
-    private ZonedDateTime date;
-
     private String imageURL;
 }
