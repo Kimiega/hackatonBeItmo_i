@@ -1,6 +1,6 @@
-package space.arlet.meowhack.services;
+package space.arlet.meowhack.services.progress;
 
-import space.arlet.meowhack.data.Direction;
+import space.arlet.meowhack.services.Direction;
 
 public interface ExperienceSource {
 

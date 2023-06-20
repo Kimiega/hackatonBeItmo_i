@@ -1,7 +1,6 @@
-package space.arlet.meowhack.data;
+package space.arlet.meowhack.services;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum Direction {
     ECO("eco"),
