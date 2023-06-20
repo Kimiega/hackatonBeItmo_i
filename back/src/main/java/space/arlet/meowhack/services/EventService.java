@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import space.arlet.meowhack.data.EventInfo;
 import space.arlet.meowhack.repositories.EventRepo;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -19,12 +20,16 @@ public class EventService {
         eventRepo.save(event);
     }
 
+    public List<EventInfo> getAllEvents() {
+        return getEvents(eventRepo.count());
+    }
+
     public List<EventInfo> getEvents() {
         return getEvents(5);
     }
 
-    public List<EventInfo> getEvents(int countLast) {
-        return List.of();
-
+    public List<EventInfo> getEvents(long countLast) {
+        return eventRepo.findAll().stream().sorted(Comparator.comparing(EventInfo::getStartTime).reversed())
+                .limit(countLast).toList();
     }
 }
