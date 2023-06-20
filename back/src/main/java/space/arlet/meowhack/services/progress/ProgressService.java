@@ -35,38 +35,8 @@ public class ProgressService {
     }
 
     private void recalculateLevels(ProgressInfo progressInfo, Direction direction) {
-        long exp;
-        long level;
-        switch (direction) {
-            case FRIENDLY -> {
-                exp = progressInfo.getExpFriendly();
-                level = progressInfo.getLvlFriendly();
-            }
-            case HEALTHY -> {
-                exp = progressInfo.getExpHealthy();
-                level = progressInfo.getLvlHealthy();
-            }
-            case PRO -> {
-                exp = progressInfo.getExpPro();
-                level = progressInfo.getLvlPro();
-            }
-            case FIT -> {
-                exp = progressInfo.getExpFit();
-                level = progressInfo.getLvlFit();
-            }
-            case ECO -> {
-                exp = progressInfo.getExpEco();
-                level = progressInfo.getLvlEco();
-            }
-            case OPEN -> {
-                exp = progressInfo.getExpOpen();
-                level = progressInfo.getLvlOpen();
-            }
-            default -> {
-                exp = 0;
-                level = 0;
-            }
-        }
+        long exp = getExpByDirection(progressInfo, direction);
+        long level = getLevelByDirection(progressInfo, direction);
 
         long newLevels = newLevelsCount(exp, level);
 
@@ -99,5 +69,27 @@ public class ProgressService {
         while (tiers[0] + (level + counter) * expStep >= exp) counter++;
 
         return counter;
+    }
+
+    public long getLevelByDirection(ProgressInfo progressInfo, Direction direction) {
+        return switch (direction) {
+            case FRIENDLY -> progressInfo.getLvlFriendly();
+            case HEALTHY -> progressInfo.getLvlHealthy();
+            case PRO -> progressInfo.getLvlPro();
+            case FIT -> progressInfo.getLvlFit();
+            case ECO -> progressInfo.getLvlEco();
+            case OPEN -> progressInfo.getLvlOpen();
+        };
+    }
+
+    public long getExpByDirection(ProgressInfo progressInfo, Direction direction) {
+        return switch (direction) {
+            case FRIENDLY -> progressInfo.getExpFriendly();
+            case HEALTHY -> progressInfo.getExpHealthy();
+            case PRO -> progressInfo.getExpPro();
+            case FIT -> progressInfo.getExpFit();
+            case ECO -> progressInfo.getExpEco();
+            case OPEN -> progressInfo.getExpOpen();
+        };
     }
 }
