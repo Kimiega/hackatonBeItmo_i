@@ -19,6 +19,8 @@ public class ProgressInfo {
     @Id
     private long userId;
 
+    private long lvl;
+
     private long expEco;
     private long lvlEco;
 
