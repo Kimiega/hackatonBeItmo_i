@@ -72,14 +72,14 @@ public class ProgressService {
 
         if (newLevels != 0) {
             switch (direction) {
-                case FRIENDLY -> progressInfo.setLvlFriendly(progressInfo.getLvlFriendly()+newLevels);
-                case HEALTHY -> progressInfo.setLvlHealthy(progressInfo.getLvlHealthy()+newLevels);
-                case PRO -> progressInfo.setLvlPro(progressInfo.getLvlPro()+newLevels);
-                case FIT -> progressInfo.setLvlFit(progressInfo.getLvlFit()+newLevels);
-                case ECO -> progressInfo.setLvlEco(progressInfo.getLvlEco()+newLevels);
-                case OPEN -> progressInfo.setLvlOpen(progressInfo.getLvlOpen()+newLevels);
+                case FRIENDLY -> progressInfo.setLvlFriendly(progressInfo.getLvlFriendly() + newLevels);
+                case HEALTHY -> progressInfo.setLvlHealthy(progressInfo.getLvlHealthy() + newLevels);
+                case PRO -> progressInfo.setLvlPro(progressInfo.getLvlPro() + newLevels);
+                case FIT -> progressInfo.setLvlFit(progressInfo.getLvlFit() + newLevels);
+                case ECO -> progressInfo.setLvlEco(progressInfo.getLvlEco() + newLevels);
+                case OPEN -> progressInfo.setLvlOpen(progressInfo.getLvlOpen() + newLevels);
             }
-            progressInfo.setLvl(progressInfo.getLvl()+newLevels);
+            progressInfo.setLvl(progressInfo.getLvl() + newLevels);
         }
     }
 
@@ -96,7 +96,7 @@ public class ProgressService {
 
     private long newLevelsCount(long exp, long level) {
         long counter = 0;
-        while (tiers[0] + (level+counter) * expStep >= exp) counter++;
+        while (tiers[0] + (level + counter) * expStep >= exp) counter++;
 
         return counter;
     }
