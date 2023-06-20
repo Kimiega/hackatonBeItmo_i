@@ -20,7 +20,8 @@ public class ProgressService {
 
     private final ProgressRepo progressRepo;
 
-    public ProgressService(@Autowired ProgressRepo progressRepo) {
+    @Autowired
+    public ProgressService(ProgressRepo progressRepo) {
         this.progressRepo = progressRepo;
     }
 
