@@ -1,12 +1,11 @@
-package space.arlet.meowhack.services;
+package space.arlet.meowhack.services.recommendation;
 
-import lombok.Getter;
-import lombok.Setter;
 import one.util.streamex.StreamEx;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import space.arlet.meowhack.data.EventInfo;
 import space.arlet.meowhack.data.ProgressInfo;
+import space.arlet.meowhack.services.Direction;
 import space.arlet.meowhack.services.events.EventService;
 import space.arlet.meowhack.services.progress.ProgressService;
 

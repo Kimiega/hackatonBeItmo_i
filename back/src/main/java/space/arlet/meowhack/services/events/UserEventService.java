@@ -4,12 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import space.arlet.meowhack.data.EventInfo;
 import space.arlet.meowhack.data.UserEventInfo;
-import space.arlet.meowhack.repositories.EventRepo;
 import space.arlet.meowhack.repositories.UserEventRepo;
-import space.arlet.meowhack.services.EventNotFoundException;
 
-import java.time.LocalTime;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
