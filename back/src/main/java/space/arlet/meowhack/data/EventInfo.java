@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalTime;
+import java.time.ZonedDateTime;
 
 @Entity
 @Table(name="events_info")
@@ -24,8 +25,8 @@ public class EventInfo {
     private String name;
     private String description;
 
-    private LocalTime startTime;
-    private LocalTime finishTime;
+    private ZonedDateTime startTime;
+    private ZonedDateTime finishTime;
 
     private String direction;
 }
