@@ -54,8 +54,10 @@ public class Achievement implements ExperienceSource {
     public static class Builder {
         private final Achievement currentAchievement;
 
-        Builder() {
+        public Builder() {
             currentAchievement = new Achievement();
+
+            currentAchievement.setType(Type.USER_CREATED);
         }
         public Achievement build() {
             return currentAchievement;
@@ -83,6 +85,11 @@ public class Achievement implements ExperienceSource {
 
         public Builder setExpByTier(ProgressService.Tier tier) {
             currentAchievement.setExp(tier.exp);
+            return this;
+        }
+
+        public Builder makeItBuildIn() {
+            currentAchievement.setType(Type.BUILT_IN);
             return this;
         }
     }
