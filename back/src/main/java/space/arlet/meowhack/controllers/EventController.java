@@ -3,15 +3,13 @@ package space.arlet.meowhack.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import space.arlet.meowhack.data.EventInfo;
-import space.arlet.meowhack.data.ProgressInfo;
 import space.arlet.meowhack.services.EventNotFoundException;
-import space.arlet.meowhack.services.UserNotFoundException;
 import space.arlet.meowhack.services.events.EventService;
-import space.arlet.meowhack.services.progress.ProgressService;
 
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<Void> addEvent(EventInfo eventInfo) {
+    public ResponseEntity<Void> addEvent(@RequestBody EventInfo eventInfo) {
         eventService.addEvent(eventInfo);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
