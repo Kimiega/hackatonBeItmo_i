@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import space.arlet.meowhack.data.EventInfo;
 import space.arlet.meowhack.repositories.EventRepo;
+import space.arlet.meowhack.services.EventNotFoundException;
 
 import java.time.LocalTime;
 import java.util.Comparator;
@@ -24,6 +25,10 @@ public class EventService {
 
     public List<EventInfo> getAllEvents() {
         return getEvents(eventRepo.count());
+    }
+
+    public EventInfo getEventById(long eventId) {
+        return eventRepo.findById(eventId).orElseThrow(EventNotFoundException::new);
     }
 
     public List<EventInfo> getEvents() {
