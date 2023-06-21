@@ -8,24 +8,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.ZonedDateTime;
-
 @Entity
-@Table(name = "user_achievements")
-
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "achiev_codes")
 
 @Getter
 @Setter
-public class Achiev {
+@NoArgsConstructor
+@AllArgsConstructor
+public class AchievementsCode {
     @Id
     private long id;
 
-    private String title;
-    private String description;
-
-    private float receivingPercent;
-
-    private String imageURL;
+    private String code;
+    private long achievementId;
 }
