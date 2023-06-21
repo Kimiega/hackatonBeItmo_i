@@ -68,4 +68,10 @@ public class AchievementsService {
         return userAchievementsRepo.getUserAchievementInfosByUserId(userId);
     }
 
+    public Achievement getAchievementById(long achievementId) {
+        if (!achievementRepo.existsById(achievementId))
+            throw new AchievementNotFoundException();
+        return achievementRepo.getReferenceById(achievementId);
+    }
+
 }
