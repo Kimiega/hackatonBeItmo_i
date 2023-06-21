@@ -19,7 +19,7 @@ import space.arlet.meowhack.services.progress.ProgressService;
 @Setter
 public class Achievement implements ExperienceSource {
 
-    enum Type {
+    public enum Type {
         BUILT_IN,
         USER_CREATED
     }
