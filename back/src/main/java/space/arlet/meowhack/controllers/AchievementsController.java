@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import space.arlet.meowhack.data.Achievement;
 import space.arlet.meowhack.data.UserAchievementInfo;
-import space.arlet.meowhack.services.UserNotFoundException;
 import space.arlet.meowhack.services.achievements.AchievementNotFoundException;
+import space.arlet.meowhack.services.achievements.AchievementExistsException;
 import space.arlet.meowhack.services.achievements.AchievementsService;
 
 import java.util.List;
@@ -35,6 +35,15 @@ public class AchievementsController {
             return new ResponseEntity<>(achievementsService.getAchievementById(achievementId), HttpStatus.OK);
         } catch (AchievementNotFoundException e) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "${api_path}/achievement", method = RequestMethod.POST)
+    public ResponseEntity<Void> addAchievement(Achievement achievement) {
+        try {
+
+        } catch (AchievementExistsException e) {
+
         }
     }
 
