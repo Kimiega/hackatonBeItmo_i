@@ -23,10 +23,7 @@ public class ProgressController {
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     public ResponseEntity<ProgressInfo> getInfo(long userId) {
-        try {
-            return new ResponseEntity<>(progressService.getProgressInfoByUserId(userId), HttpStatus.OK);
-        } catch (UserNotFoundException e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
+        //todo: проверка валидности userId
+        return new ResponseEntity<>(progressService.getProgressInfoByUserId(userId), HttpStatus.OK);
     }
 }

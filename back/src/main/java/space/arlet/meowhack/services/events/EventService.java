@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import space.arlet.meowhack.data.EventInfo;
 import space.arlet.meowhack.repositories.EventRepo;
-import space.arlet.meowhack.services.EventNotFoundException;
 
 import java.time.ZonedDateTime;
 import java.util.Comparator;

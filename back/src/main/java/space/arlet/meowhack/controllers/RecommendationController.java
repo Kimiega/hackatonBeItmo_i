@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import space.arlet.meowhack.data.EventInfo;
-import space.arlet.meowhack.services.RecommendationService;
+import space.arlet.meowhack.services.recommendation.RecommendationService;
 import space.arlet.meowhack.services.UserNotFoundException;
 
 import java.util.List;

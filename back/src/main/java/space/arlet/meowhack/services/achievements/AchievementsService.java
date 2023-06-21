@@ -6,27 +6,28 @@ import space.arlet.meowhack.data.Achievement;
 import space.arlet.meowhack.data.UserAchievementInfo;
 import space.arlet.meowhack.repositories.AchievementsCodesRepo;
 import space.arlet.meowhack.repositories.AchievementRepo;
-import space.arlet.meowhack.repositories.UserAchievsRepo;
+import space.arlet.meowhack.repositories.UserAchievementsRepo;
 import space.arlet.meowhack.services.progress.ProgressService;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Service
 public class AchievementsService {
 
     private final AchievementRepo achievementRepo;
     private final ProgressService progressService;
-    private final UserAchievsRepo userAchievsRepo;
+    private final UserAchievementsRepo userAchievementsRepo;
     private final AchievementsCodesRepo achievementsCodesRepo;
 
     @Autowired
     AchievementsService(AchievementRepo achievementRepo,
                         ProgressService progressService,
-                        UserAchievsRepo userAchievsRepo,
+                        UserAchievementsRepo userAchievementsRepo,
                         AchievementsCodesRepo achievementsCodesRepo) {
         this.achievementRepo = achievementRepo;
         this.progressService = progressService;
-        this.userAchievsRepo = userAchievsRepo;
+        this.userAchievementsRepo = userAchievementsRepo;
         this.achievementsCodesRepo = achievementsCodesRepo;
     }
 
@@ -40,7 +41,7 @@ public class AchievementsService {
         userAchievementsInfo.setAchievementId(achievementId);
         userAchievementsInfo.setDate(ZonedDateTime.now());
 
-        userAchievsRepo.save(userAchievementsInfo);
+        userAchievementsRepo.save(userAchievementsInfo);
 
         Achievement achievement = achievementRepo.getReferenceById(achievementId);
 
@@ -61,6 +62,10 @@ public class AchievementsService {
         if (achievementRepo.existsByTitle(achievement.getTitle()))
             throw new AchievementsExistsException();
         achievementRepo.save(achievement);
+    }
+
+    public List<UserAchievementInfo> getAllAchievementsByUserId(long userId) {
+        return userAchievementsRepo.getUserAchievementInfosByUserId(userId);
     }
 
 }
