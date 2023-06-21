@@ -15,14 +15,14 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @Setter
 @Getter
-public class UserAchievsInfo {
+public class UserAchievementInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private long userId;
 
-    private long achievId;
+    private long achievementId;
 
     private ZonedDateTime date;
 }

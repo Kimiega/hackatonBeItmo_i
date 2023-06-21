@@ -15,10 +15,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AchievCode {
+public class AchievementsCode {
     @Id
     private long id;
 
     private String code;
-    private long achievId;
+    private long achievementId;
 }

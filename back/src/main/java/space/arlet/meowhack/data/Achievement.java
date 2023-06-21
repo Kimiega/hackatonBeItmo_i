@@ -17,7 +17,7 @@ import space.arlet.meowhack.services.progress.ProgressService;
 
 @Getter
 @Setter
-public class Achiev implements ExperienceSource {
+public class Achievement implements ExperienceSource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -43,38 +43,38 @@ public class Achiev implements ExperienceSource {
         return direction;
     }
 
-    public class Builder {
-        private final Achiev currentAchiev;
+    public static class Builder {
+        private final Achievement currentAchievement;
 
         Builder() {
-            currentAchiev = new Achiev();
+            currentAchievement = new Achievement();
         }
-        public Achiev build() {
-            return currentAchiev;
+        public Achievement build() {
+            return currentAchievement;
         }
 
         public Builder setTitle(String value) {
-            currentAchiev.setTitle(value);
+            currentAchievement.setTitle(value);
             return this;
         }
 
         public Builder setDescription(String value) {
-            currentAchiev.setDescription(value);
+            currentAchievement.setDescription(value);
             return this;
         }
 
         public Builder setImageUrl(String value) {
-            currentAchiev.setImageURL(value);
+            currentAchievement.setImageURL(value);
             return this;
         }
 
         public Builder setDirection(Direction value) {
-            currentAchiev.setDirection(value);
+            currentAchievement.setDirection(value);
             return this;
         }
 
         public Builder setExpByTier(ProgressService.Tier tier) {
-            currentAchiev.setExp(tier.exp);
+            currentAchievement.setExp(tier.exp);
             return this;
         }
     }

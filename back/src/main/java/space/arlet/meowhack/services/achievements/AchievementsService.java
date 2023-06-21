@@ -2,10 +2,10 @@ package space.arlet.meowhack.services.achievements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import space.arlet.meowhack.data.Achiev;
-import space.arlet.meowhack.data.UserAchievsInfo;
-import space.arlet.meowhack.repositories.AchievCodesRepo;
-import space.arlet.meowhack.repositories.AchievRepo;
+import space.arlet.meowhack.data.Achievement;
+import space.arlet.meowhack.data.UserAchievementInfo;
+import space.arlet.meowhack.repositories.AchievementsCodesRepo;
+import space.arlet.meowhack.repositories.AchievementRepo;
 import space.arlet.meowhack.repositories.UserAchievsRepo;
 import space.arlet.meowhack.services.progress.ProgressService;
 
@@ -14,53 +14,53 @@ import java.time.ZonedDateTime;
 @Service
 public class AchievementsService {
 
-    private final AchievRepo achievRepo;
+    private final AchievementRepo achievementRepo;
     private final ProgressService progressService;
     private final UserAchievsRepo userAchievsRepo;
-    private final AchievCodesRepo achievCodesRepo;
+    private final AchievementsCodesRepo achievementsCodesRepo;
 
     @Autowired
-    AchievementsService(AchievRepo achievRepo,
+    AchievementsService(AchievementRepo achievementRepo,
                         ProgressService progressService,
                         UserAchievsRepo userAchievsRepo,
-                        AchievCodesRepo achievCodesRepo) {
-        this.achievRepo = achievRepo;
+                        AchievementsCodesRepo achievementsCodesRepo) {
+        this.achievementRepo = achievementRepo;
         this.progressService = progressService;
         this.userAchievsRepo = userAchievsRepo;
-        this.achievCodesRepo = achievCodesRepo;
+        this.achievementsCodesRepo = achievementsCodesRepo;
     }
 
     public void addAchievToUserById(long userId, long achievId) {
-        if (!achievRepo.existsById(achievId))
-            throw new AchievNotFoundException();
+        if (!achievementRepo.existsById(achievId))
+            throw new AchievementNotFoundException();
 
-        var userAchievsInfo = new UserAchievsInfo();
+        var userAchievsInfo = new UserAchievementInfo();
 
         userAchievsInfo.setUserId(userId);
-        userAchievsInfo.setAchievId(achievId);
+        userAchievsInfo.setAchievementId(achievId);
         userAchievsInfo.setDate(ZonedDateTime.now());
 
         userAchievsRepo.save(userAchievsInfo);
 
-        Achiev achiev = achievRepo.getReferenceById(achievId);
+        Achievement achievement = achievementRepo.getReferenceById(achievId);
 
-        achiev.setOwnersCount(achiev.getOwnersCount() + 1);
-        progressService.updateProgress(userId, achiev);
+        achievement.setOwnersCount(achievement.getOwnersCount() + 1);
+        progressService.updateProgress(userId, achievement);
     }
 
     public void addAchievToUserByCode(long userId, String code) {
-        if (!achievCodesRepo.existsByCode(code))
-            throw new CodeNotFoundException();
+        if (!achievementsCodesRepo.existsByCode(code))
+            throw new AchievementCodeNotFoundException();
 
-        long achievId = achievCodesRepo.getAchievCodeByCode(code).getAchievId();
+        long achievId = achievementsCodesRepo.getAchievCodeByCode(code).getAchievementId();
 
         addAchievToUserById(userId, achievId);
     }
 
-    public void createAchiev(Achiev achiev) {
-        if (achievRepo.existsByTitle(achiev.getTitle()))
+    public void createAchiev(Achievement achievement) {
+        if (achievementRepo.existsByTitle(achievement.getTitle()))
             throw new AchievementsExistsException();
-        achievRepo.save(achiev);
+        achievementRepo.save(achievement);
     }
 
 }

@@ -1,8 +1,8 @@
 package space.arlet.meowhack.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import space.arlet.meowhack.data.Achiev;
+import space.arlet.meowhack.data.Achievement;
 
-public interface AchievRepo extends JpaRepository<Achiev, Long> {
+public interface AchievementRepo extends JpaRepository<Achievement, Long> {
     boolean existsByTitle(String title);
 }
