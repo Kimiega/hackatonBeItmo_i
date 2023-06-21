@@ -7,16 +7,21 @@ import space.arlet.meowhack.repositories.ProgressRepo;
 import space.arlet.meowhack.services.Direction;
 import space.arlet.meowhack.services.UserNotFoundException;
 
-import java.util.function.Supplier;
-
 @Service
 public class ProgressService {
-    public long[] tiers = {
-            200, // common (по умолчанию берётся как граница для достижения первого уровня)
-            550, // rare
-            750, // epic
-            1250 // legendary
-    };
+
+    public enum Tier {
+        COMMON(200),
+        RARE(550),
+        EPIC(750),
+        LEGENDARY(1250);
+
+        final long exp;
+
+        Tier(long exp) {
+            this.exp = exp;
+        }
+    }
 
     private final long expStep = 50;
 
@@ -68,7 +73,7 @@ public class ProgressService {
 
     private long newLevelsCount(long exp, long level) {
         long counter = 0;
-        while (tiers[0] + (level + counter) * expStep >= exp) counter++;
+        while (Tier.COMMON.exp + (level + counter) * expStep >= exp) counter++;
 
         return counter;
     }
