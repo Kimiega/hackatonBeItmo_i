@@ -38,7 +38,7 @@ public class RecommendationService {
 
         for (var direction : Direction.values()) {
             priorities.put(direction,
-                    events.stream().filter(event -> Direction.from(event.getDirection()) == direction)
+                    events.stream().filter(event -> event.getDirection() == direction)
                             .sorted(eventService.sortByDate().reversed()).toList());
         }
         long countOfEvents = countEventsForFirstDirection;

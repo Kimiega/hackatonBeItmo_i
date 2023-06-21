@@ -1,12 +1,11 @@
 package space.arlet.meowhack.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import space.arlet.meowhack.services.Direction;
 
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
@@ -20,6 +19,7 @@ import java.time.ZonedDateTime;
 @Setter
 public class EventInfo {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
@@ -28,5 +28,5 @@ public class EventInfo {
     private ZonedDateTime startTime;
     private ZonedDateTime finishTime;
 
-    private String direction;
+    private Direction direction;
 }
