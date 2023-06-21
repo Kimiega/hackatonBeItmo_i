@@ -36,7 +36,7 @@ public class EventService {
     }
 
     public List<EventInfo> getEvents(long countLast) {
-        return eventRepo.findAll().stream().sorted(Comparator.comparing(EventInfo::getStartTime).reversed())
+        return eventRepo.findAll().stream().sorted(sortByDate().reversed())
                 .limit(countLast).toList();
     }
 
@@ -59,5 +59,9 @@ public class EventService {
         return eventRepo.findAll().stream()
                 .filter((event -> event.getFinishTime().isBefore(now)))
                 .toList();
+    }
+
+    public Comparator<EventInfo> sortByDate() {
+        return Comparator.comparing(EventInfo::getStartTime);
     }
 }
