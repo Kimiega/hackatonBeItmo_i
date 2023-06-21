@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "users_achievements")
+@Table(name = "user_achievements")
 
 @NoArgsConstructor
 @AllArgsConstructor

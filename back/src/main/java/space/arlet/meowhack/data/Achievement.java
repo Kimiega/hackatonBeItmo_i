@@ -10,7 +10,7 @@ import space.arlet.meowhack.services.progress.ExperienceSource;
 import space.arlet.meowhack.services.progress.ProgressService;
 
 @Entity
-@Table(name = "user_achievements")
+@Table(name = "achievements")
 
 @AllArgsConstructor
 @NoArgsConstructor
