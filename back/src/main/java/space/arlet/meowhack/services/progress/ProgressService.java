@@ -16,7 +16,7 @@ public class ProgressService {
         EPIC(750),
         LEGENDARY(1250);
 
-        final long exp;
+        public final long exp;
 
         Tier(long exp) {
             this.exp = exp;
