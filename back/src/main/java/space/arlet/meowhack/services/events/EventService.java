@@ -6,7 +6,7 @@ import space.arlet.meowhack.data.EventInfo;
 import space.arlet.meowhack.repositories.EventRepo;
 import space.arlet.meowhack.services.EventNotFoundException;
 
-import java.time.LocalTime;
+import java.time.ZonedDateTime;
 import java.util.Comparator;
 import java.util.List;
 
@@ -36,28 +36,32 @@ public class EventService {
     }
 
     public List<EventInfo> getEvents(long countLast) {
-        return eventRepo.findAll().stream().sorted(Comparator.comparing(EventInfo::getStartTime).reversed())
+        return eventRepo.findAll().stream().sorted(sortByDate().reversed())
                 .limit(countLast).toList();
     }
 
     public List<EventInfo> getActualEvents() {
-        LocalTime now = LocalTime.now();
+        ZonedDateTime now = ZonedDateTime.now();
         return eventRepo.findAll().stream()
                 .filter((event -> event.getStartTime().isBefore(now) && event.getFinishTime().isAfter(now)))
                 .toList();
     }
 
     public List<EventInfo> getFutureEvents() {
-        LocalTime now = LocalTime.now();
+        ZonedDateTime now = ZonedDateTime.now();
         return eventRepo.findAll().stream()
                 .filter((event -> event.getStartTime().isAfter(now)))
                 .toList();
     }
 
     public List<EventInfo> getPastEvents() {
-        LocalTime now = LocalTime.now();
+        ZonedDateTime now = ZonedDateTime.now();
         return eventRepo.findAll().stream()
                 .filter((event -> event.getFinishTime().isBefore(now)))
                 .toList();
+    }
+
+    public Comparator<EventInfo> sortByDate() {
+        return Comparator.comparing(EventInfo::getStartTime);
     }
 }
