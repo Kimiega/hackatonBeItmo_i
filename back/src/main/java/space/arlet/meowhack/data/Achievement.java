@@ -18,9 +18,17 @@ import space.arlet.meowhack.services.progress.ProgressService;
 @Getter
 @Setter
 public class Achievement implements ExperienceSource {
+
+    enum Type {
+        BUILT_IN,
+        USER_CREATED
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    private Type type;
 
     private String title;
     private String description;
