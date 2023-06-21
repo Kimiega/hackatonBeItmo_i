@@ -1,25 +1,26 @@
 package space.arlet.meowhack.data;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="user_events")
+@Table(name="user_info")
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserEventInfo {
+public class UserInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private long userId;
+    private String name;
 
-    private long eventId;
+    private long course;
 }
