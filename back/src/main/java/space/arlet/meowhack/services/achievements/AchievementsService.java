@@ -2,6 +2,7 @@ package space.arlet.meowhack.services.achievements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import space.arlet.meowhack.data.Achiev;
 import space.arlet.meowhack.data.UserAchievsInfo;
 import space.arlet.meowhack.repositories.AchievCodesRepo;
 import space.arlet.meowhack.repositories.AchievRepo;
@@ -30,7 +31,7 @@ public class AchievementsService {
     }
 
     public void addAchievToUserById(long userId, long achievId) {
-        if(!achievRepo.existsById(achievId))
+        if (!achievRepo.existsById(achievId))
             throw new AchievNotFoundException();
 
         var userAchievsInfo = new UserAchievsInfo();
@@ -41,7 +42,10 @@ public class AchievementsService {
 
         userAchievsRepo.save(userAchievsInfo);
 
-        progressService.updateProgress(userId, achievRepo.getReferenceById(achievId));
+        Achiev achiev = achievRepo.getReferenceById(achievId);
+
+        achiev.setOwnersCount(achiev.getOwnersCount() + 1);
+        progressService.updateProgress(userId, achiev);
     }
 
     public void addAchievToUserByCode(long userId, String code) {
@@ -51,6 +55,12 @@ public class AchievementsService {
         long achievId = achievCodesRepo.getAchievCodeByCode(code).getAchievId();
 
         addAchievToUserById(userId, achievId);
+    }
+
+    public void createAchiev(Achiev achiev) {
+        if (achievRepo.existsByTitle(achiev.getTitle()))
+            throw new AchievementsExistsException();
+        achievRepo.save(achiev);
     }
 
 }
