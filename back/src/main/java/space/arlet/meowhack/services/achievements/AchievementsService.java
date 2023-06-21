@@ -60,7 +60,7 @@ public class AchievementsService {
 
     public void createAchievement(Achievement achievement) {
         if (achievementRepo.existsByTitle(achievement.getTitle()))
-            throw new AchievementsExistsException();
+            throw new AchievementExistsException();
         achievementRepo.save(achievement);
     }
 
@@ -72,6 +72,10 @@ public class AchievementsService {
         if (!achievementRepo.existsById(achievementId))
             throw new AchievementNotFoundException();
         return achievementRepo.getReferenceById(achievementId);
+    }
+
+    public List<Achievement> getAllBuiltInAchievements() {
+        return achievementRepo.findAllByType(Achievement.Type.BUILT_IN);
     }
 
 }
