@@ -30,34 +30,34 @@ public class AchievementsService {
         this.achievementsCodesRepo = achievementsCodesRepo;
     }
 
-    public void addAchievToUserById(long userId, long achievId) {
-        if (!achievementRepo.existsById(achievId))
+    public void addAchievementsToUserById(long userId, long achievementId) {
+        if (!achievementRepo.existsById(achievementId))
             throw new AchievementNotFoundException();
 
-        var userAchievsInfo = new UserAchievementInfo();
+        var userAchievementsInfo = new UserAchievementInfo();
 
-        userAchievsInfo.setUserId(userId);
-        userAchievsInfo.setAchievementId(achievId);
-        userAchievsInfo.setDate(ZonedDateTime.now());
+        userAchievementsInfo.setUserId(userId);
+        userAchievementsInfo.setAchievementId(achievementId);
+        userAchievementsInfo.setDate(ZonedDateTime.now());
 
-        userAchievsRepo.save(userAchievsInfo);
+        userAchievsRepo.save(userAchievementsInfo);
 
-        Achievement achievement = achievementRepo.getReferenceById(achievId);
+        Achievement achievement = achievementRepo.getReferenceById(achievementId);
 
         achievement.setOwnersCount(achievement.getOwnersCount() + 1);
         progressService.updateProgress(userId, achievement);
     }
 
-    public void addAchievToUserByCode(long userId, String code) {
+    public void addAchievementToUserByCode(long userId, String code) {
         if (!achievementsCodesRepo.existsByCode(code))
             throw new AchievementCodeNotFoundException();
 
-        long achievId = achievementsCodesRepo.getAchievCodeByCode(code).getAchievementId();
+        long achievementId = achievementsCodesRepo.getAchievCodeByCode(code).getAchievementId();
 
-        addAchievToUserById(userId, achievId);
+        addAchievementsToUserById(userId, achievementId);
     }
 
-    public void createAchiev(Achievement achievement) {
+    public void createAchievement(Achievement achievement) {
         if (achievementRepo.existsByTitle(achievement.getTitle()))
             throw new AchievementsExistsException();
         achievementRepo.save(achievement);
