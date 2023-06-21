@@ -7,6 +7,8 @@ import space.arlet.meowhack.repositories.ProgressRepo;
 import space.arlet.meowhack.services.Direction;
 import space.arlet.meowhack.services.UserNotFoundException;
 
+import java.util.function.Supplier;
+
 @Service
 public class ProgressService {
     public long[] tiers = {
@@ -69,6 +71,10 @@ public class ProgressService {
         while (tiers[0] + (level + counter) * expStep >= exp) counter++;
 
         return counter;
+    }
+
+    public ProgressInfo getProgressInfoByUserId(long userId) {
+        return progressRepo.findById(userId).orElseThrow(UserNotFoundException::new);
     }
 
     public long getLevelByDirection(ProgressInfo progressInfo, Direction direction) {
