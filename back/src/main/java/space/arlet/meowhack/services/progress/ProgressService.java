@@ -79,7 +79,12 @@ public class ProgressService {
     }
 
     public ProgressInfo getProgressInfoByUserId(long userId) {
-        return progressRepo.findById(userId).orElseThrow(UserNotFoundException::new);
+        return progressRepo.findById(userId).orElseGet(() -> {
+            var progressInfo = new ProgressInfo();
+
+            progressInfo.setUserId(userId);
+            return progressInfo;
+        });
     }
 
     public long getLevelByDirection(ProgressInfo progressInfo, Direction direction) {
