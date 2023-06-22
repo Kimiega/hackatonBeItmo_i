@@ -25,7 +25,7 @@ public class TrafficController {
         this.trafficService = trafficService;
     }
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> addUser(@RequestBody TrafficInfo trafficInfo) {
+    public ResponseEntity<Void> addTraffic(@RequestBody TrafficInfo trafficInfo) {
         trafficService.addTrafficInfo(trafficInfo);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
