@@ -26,6 +26,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.1.0")
     implementation("one.util:streamex:0.7.3")
     implementation("org.postgresql:postgresql")
+    implementation("org.reflections:reflections:0.10.2")
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")

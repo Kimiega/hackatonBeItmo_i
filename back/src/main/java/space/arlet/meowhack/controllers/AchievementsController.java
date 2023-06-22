@@ -18,6 +18,7 @@ import space.arlet.meowhack.services.achievements.AchievementNotFoundException;
 import space.arlet.meowhack.services.achievements.AchievementExistsException;
 import space.arlet.meowhack.services.achievements.AchievementsService;
 import space.arlet.meowhack.services.progress.ProgressService;
+import space.arlet.meowhack.services.statistics.StatisticsService;
 
 import java.util.List;
 
@@ -25,14 +26,17 @@ import java.util.List;
 public class AchievementsController {
 
     private final AchievementsService achievementsService;
+    private final StatisticsService statisticsService;
 
     @Autowired
-    AchievementsController(AchievementsService achievementsService) {
+    AchievementsController(AchievementsService achievementsService, StatisticsService statisticsService) {
         this.achievementsService = achievementsService;
+        this.statisticsService = statisticsService;
     }
 
     @RequestMapping(value="${api_path}/achievements", method = RequestMethod.GET)
     public ResponseEntity<List<UserAchievementInfo>> getAllAchievements(long userId) {
+        statisticsService.updateAchievements(userId);
         return new ResponseEntity<>(achievementsService.getAllAchievementsByUserId(userId), HttpStatus.OK);
     }
 
