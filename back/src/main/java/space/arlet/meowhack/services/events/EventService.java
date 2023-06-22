@@ -43,6 +43,7 @@ public class EventService {
         ZonedDateTime now = ZonedDateTime.now();
         return eventRepo.findAll().stream()
                 .filter((event -> event.getStartTime().isBefore(now) && event.getFinishTime().isAfter(now)))
+                .sorted(sortByDate())
                 .toList();
     }
 
@@ -50,6 +51,7 @@ public class EventService {
         ZonedDateTime now = ZonedDateTime.now();
         return eventRepo.findAll().stream()
                 .filter((event -> event.getStartTime().isAfter(now)))
+                .sorted(sortByDate())
                 .toList();
     }
 
