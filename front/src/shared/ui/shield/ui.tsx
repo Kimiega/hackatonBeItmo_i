@@ -15,7 +15,7 @@ export const BeItmoShield = ({ type }: BeItmoShieldProps) => {
     case BeItmo.Fit:
       label = "be fit";
       break;
-    case BeItmo.Freindly:
+    case BeItmo.Friendly:
       label = "be freindly";
       break;
     case BeItmo.Healthy:

@@ -3,10 +3,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .title {
   font-size: 40px;
+  padding-bottom: 20px;
 }
 
 .userChar {
@@ -16,7 +18,8 @@
 .tasksContainer {
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.548);
+  border: 1px solid lightgray;
+  /* box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.548); */
 }
 
 .tasks {
@@ -29,6 +32,8 @@
 
 .achievments {
   display: inline-block;
-  flex-grow: 1;
   flex-basis: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
 }

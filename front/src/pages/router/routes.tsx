@@ -1,14 +1,10 @@
 import { RouteObject } from "react-router-dom";
 import { paths } from "./paths";
-import { CounterPage } from "../counter";
 import { TestPage } from "pages/test/ui";
 import { ProfilePage } from "pages/profile";
+import { EventsPage } from "pages/events";
 
 export const publicRoutes: RouteObject[] = [
-  {
-    path: paths.COUNTER,
-    element: <CounterPage />,
-  },
   {
     path: paths.TEST,
     element: <TestPage />,
@@ -16,5 +12,9 @@ export const publicRoutes: RouteObject[] = [
   {
     path: paths.PROFILE,
     element: <ProfilePage />,
+  },
+  {
+    path: paths.EVENTS,
+    element: <EventsPage />,
   },
 ];

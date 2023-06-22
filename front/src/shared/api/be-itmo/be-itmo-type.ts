@@ -1,7 +1,7 @@
 export enum BeItmo {
   Fit = "be-fit",
   Pro = "be-pro",
-  Freindly = "be-friendly",
+  Friendly = "be-friendly",
   Eco = "be-eco",
   Open = "be-open",
   Healthy = "be-healthy"

@@ -1,12 +1,13 @@
 .card {
   display: block;
   border-radius: 20px;
-  box-shadow: 5px 5px 5px lightgray;
+  /* box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.527); */
+  border: 1px solid lightgray;
 }
 
 .content {
   border-radius: inherit;
-  margin: 5px;
+  margin: 3px;
   background-color: white;
   display: flex;
   gap: 30px;
@@ -41,4 +42,9 @@
 .description {
   font-size: medium;
   padding: 5px;
+}
+
+.date {
+  text-align: end;
+  padding-top: 5px;
 }

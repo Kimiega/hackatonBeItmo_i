@@ -1,5 +1,6 @@
 import { BeItmo } from "shared/api/be-itmo/be-itmo-type";
 import styles from "./ui.module.css";
+import biStyles from "shared/ui/styles/be-itmo-type.module.css";
 import defaultBg from "shared/res/mock/background-crop.png";
 import { BeItmoShield } from "shared/ui/shield";
 import { Event } from "./model";
@@ -21,7 +22,7 @@ export const EventCard = ({
 }: EventProps) => {
   const a = new Date(date);
   return (
-    <div className={`${styles.card} ${styles[beItmoType]}`}>
+    <div className={`${styles.card} ${biStyles[beItmoType]}`}>
       <div className={styles.content}>
         <div className={styles.label}>
           <img className={styles.labelImg} src={labelUrl ?? defaultBg} alt="" />
@@ -32,7 +33,7 @@ export const EventCard = ({
             <BeItmoShield type={beItmoType} />
           </div>
           <div className={styles.description}>{description}</div>
-          <div>{a.toDateString()}</div>
+          <div className={styles.date}>{a.toDateString()}</div>
         </div>
       </div>
     </div>

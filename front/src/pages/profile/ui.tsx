@@ -13,12 +13,14 @@ import {
 import styles from "./ui.module.css";
 import { AchieventsPanel } from "widgets/achievements-panel";
 import { Achievement } from "entities/achievment";
+import { PageTemplate } from "pages/template";
+import { sampleAchieves, sampleTasks } from "shared/config";
 
 export const ProfilePage = () => {
   const [user, setUser] = useState<User>(() => testUser);
-  const [tasks, setTasks] = useState<Task[]>(() => testListTasks);
+  const [tasks, setTasks] = useState<Task[]>(() => sampleTasks);
   const [achievements, setAchievements] = useState<Achievement[]>(
-    () => testListAchievements
+    () => sampleAchieves
   );
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -29,21 +31,25 @@ export const ProfilePage = () => {
   }, []);
 
   return (
-    <div>
-      <div className={styles.title}>Мой профиль</div>
-      <div className={styles.page}>
-        <div className={styles.userChar}>
-          <UserCharacteristicsPresent user={user} />
-        </div>
-        <div className={styles.tasksContainer}>
-          <div className={styles.tasks}>
-            <TaskList tasks={tasks} />
+    <PageTemplate
+      content={
+        <div>
+          <div className={styles.title}>Мой профиль</div>
+          <div className={styles.page}>
+            <div className={styles.userChar}>
+              <UserCharacteristicsPresent user={user} />
+            </div>
+            <div className={styles.tasksContainer}>
+              <div className={styles.tasks}>
+                <TaskList tasks={tasks} />
+              </div>
+            </div>
+            <div className={styles.achievments}>
+              <AchieventsPanel achievements={achievements} />
+            </div>
           </div>
         </div>
-        <div className={styles.achievments}>
-          <AchieventsPanel achievements={achievements} />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 };

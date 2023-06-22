@@ -16,7 +16,8 @@
 .card {
   display: inline-block;
   border-radius: 40px;
-  box-shadow: inset 5px 0px 5px rgba(105, 105, 105, 0.5);
+  /* box-shadow: inset 5px 0px 5px rgba(105, 105, 105, 0.5); */
+  border: 1px solid lightgray;
 }
 
 .content {

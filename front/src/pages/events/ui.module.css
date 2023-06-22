@@ -1,0 +1,16 @@
+.page {
+  display: flex;
+}
+
+.title {
+  font-size: 40px;
+  padding-bottom: 20px;
+}
+
+.events {
+  margin: auto;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

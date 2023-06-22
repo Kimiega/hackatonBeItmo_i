@@ -13,7 +13,7 @@ export const BeItmoIcon = ({ type }: BeItmoIconProps) => {
     case BeItmo.Fit:
       iconUrl = "";
       break;
-    case BeItmo.Freindly:
+    case BeItmo.Friendly:
       iconUrl = "";
       break;
     case BeItmo.Healthy:

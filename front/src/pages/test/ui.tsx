@@ -3,12 +3,7 @@ import { EventCard } from "entities/event";
 import { TaskCard } from "entities/task";
 import { UserCharacteristicsPresent } from "featues/characteristics-present";
 import { BeItmo } from "shared/api/be-itmo/be-itmo-type";
-import {
-  testEvent,
-  testListTasks,
-  testTask,
-  testUser,
-} from "./model";
+import { testEvent, testListTasks, testTask, testUser } from "./model";
 import { TaskList } from "widgets/task-list";
 
 export const TestPage = () => {
@@ -27,7 +22,7 @@ export const TestPage = () => {
         description={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
         }
-        beItmoType={BeItmo.Freindly}
+        beItmoType={BeItmo.Friendly}
         date={"01/02/03"}
       />
 
