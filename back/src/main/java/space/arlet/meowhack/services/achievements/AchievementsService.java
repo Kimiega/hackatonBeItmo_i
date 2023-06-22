@@ -1,6 +1,7 @@
 package space.arlet.meowhack.services.achievements;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import space.arlet.meowhack.data.Achievement;
 import space.arlet.meowhack.data.UserAchievementInfo;
@@ -41,6 +42,9 @@ public class AchievementsService {
         userAchievementsInfo.setAchievementId(achievementId);
         userAchievementsInfo.setDate(ZonedDateTime.now());
 
+        if (userAchievementsRepo.exists(Example.of(userAchievementsInfo)))
+            return;
+
         userAchievementsRepo.save(userAchievementsInfo);
 
         Achievement achievement = achievementRepo.getReferenceById(achievementId);
@@ -60,7 +64,7 @@ public class AchievementsService {
 
     public void createAchievement(Achievement achievement) {
         if (achievementRepo.existsByTitle(achievement.getTitle()))
-            throw new AchievementsExistsException();
+            throw new AchievementExistsException();
         achievementRepo.save(achievement);
     }
 
@@ -72,6 +76,10 @@ public class AchievementsService {
         if (!achievementRepo.existsById(achievementId))
             throw new AchievementNotFoundException();
         return achievementRepo.getReferenceById(achievementId);
+    }
+
+    public List<Achievement> getAllBuiltInAchievements() {
+        return achievementRepo.findAllByType(Achievement.Type.BUILT_IN);
     }
 
 }
