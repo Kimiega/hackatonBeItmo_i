@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import space.arlet.meowhack.data.EventInfo;
+import space.arlet.meowhack.data.TrafficInfo;
+import space.arlet.meowhack.data.UserEventInfo;
+import space.arlet.meowhack.services.Direction;
 
 import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,9 +17,9 @@ import java.util.List;
 @Setter
 public class UserData {
     private long userId;
-    private List<Long> trafficInfo;
-    private List<EventInfo> eventInfo;
+    private List<TrafficInfo> trafficInfos;
+    private List<UserEventInfo> userEventInfos;
     private long course;
     // site stats
-    // level info
+    private Map<Direction, Long> levelInfo;
 }
