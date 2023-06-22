@@ -22,4 +22,27 @@ public class Task {
     private String description;
     private Direction direction;
     private long exp;
+
+    public static class Builder {
+        private final Task currentTask;
+
+        public Builder() {
+            currentTask = new Task();
+        }
+
+        public Builder setDescription(String value) {
+            this.currentTask.setDescription(value);
+            return this;
+        }
+
+        public Builder setDirection(Direction direction) {
+            this.currentTask.setDirection(direction);
+            return this;
+        }
+
+        public Builder setExp(long exp) {
+            this.currentTask.setExp(exp);
+            return this;
+        }
+    }
 }

@@ -43,4 +43,8 @@ public class TasksService {
                 .filter(element -> !taskIdSet.contains(element.getId()))
                 .collect(Collectors.toList());
     }
+
+    public void addTask(Task task) {
+        taskRepo.save(task);
+    }
 }
