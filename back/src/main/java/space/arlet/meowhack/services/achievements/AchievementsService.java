@@ -1,6 +1,7 @@
 package space.arlet.meowhack.services.achievements;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import space.arlet.meowhack.data.Achievement;
 import space.arlet.meowhack.data.UserAchievementInfo;
@@ -40,6 +41,9 @@ public class AchievementsService {
         userAchievementsInfo.setUserId(userId);
         userAchievementsInfo.setAchievementId(achievementId);
         userAchievementsInfo.setDate(ZonedDateTime.now());
+
+        if (userAchievementsRepo.exists(Example.of(userAchievementsInfo)))
+            return;
 
         userAchievementsRepo.save(userAchievementsInfo);
 
