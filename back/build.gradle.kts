@@ -27,6 +27,7 @@ dependencies {
     implementation("one.util:streamex:0.7.3")
     implementation("org.postgresql:postgresql")
     implementation("org.reflections:reflections:0.10.2")
+    implementation("org.mnode.ical4j:ical4j:2.2.0")
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
