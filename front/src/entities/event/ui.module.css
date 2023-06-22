@@ -1,0 +1,40 @@
+.card {
+  display: block;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px lightgray;
+}
+
+.content {
+  border-radius: inherit;
+  margin: 5px;
+  background-color: white;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  padding-left: 7px;
+  padding-right: 7px;
+  color: initial;
+}
+
+.label {
+  width: 150px;
+}
+
+.labelImg {
+  width: inherit;
+  height: inherit;
+  border-radius: 15px;
+}
+
+.contentDescription {
+  display: inline-block;
+}
+
+.title {
+  font-size: larger;
+}
+
+.description {
+  font-size: medium;
+  padding: 5px;
+}

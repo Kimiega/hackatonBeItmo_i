@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 5px dashed;
+  background-color: transparent;
+}
+
+.card {
+  display: inline-block;
+  border-radius: 40px;
+  box-shadow: inset 5px 0px 5px rgba(105, 105, 105, 0.5);
+}
+
+.content {
+  margin: 5px;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  color: white;
+  background-color: inherint;
+  border-radius: inherit;
+  text-shadow: 3px 2px 3px rgba(83, 83, 83, 0.68);
+}
+
+.section {
+  display: inline-block;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.title {
+  font-size: larger;
+}
+
+.date {
+  font-size: small;
+}
+
+.description {
+  font-size: medium;
+}
+
+.experience {
+  font-size: larger;
+}

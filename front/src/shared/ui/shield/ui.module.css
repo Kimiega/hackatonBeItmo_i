@@ -1,0 +1,10 @@
+.shield {
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  font-size: medium;
+  width: fit-content;
+  background-color: white;
+}

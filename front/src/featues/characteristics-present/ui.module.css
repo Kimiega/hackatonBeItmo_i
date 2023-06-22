@@ -1,0 +1,92 @@
+.card {
+  display: inline-block;
+  width: 400px;
+  border-radius: 40px;
+  padding: 10px;
+  box-shadow: 5px 3px 20px rgba(0, 0, 0, 0.9);
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.level {
+  display: flex;
+  gap: 20%;
+  /* justify-content: space-between; */
+}
+
+.levelNumber {
+  font-size: 40px;
+  display: inline;
+  border-radius: 40px;
+  padding: 10px;
+  background-color: #1846c73b;
+}
+
+.levelTitle {
+  font-size: 40px;
+  display: inline;
+  flex-grow: 1;
+  margin: auto;
+}
+
+.levelLabel {
+  font-size: larger;
+}
+
+.characteristics {
+  display: block;
+}
+
+.beItmoChar {
+  display: flex;
+}
+
+.barLabel {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+.charLabel {
+  display: inline;
+  font-size: larger;
+  background-color: transparent;
+  border: none;
+}
+
+.charLevel {
+  display: inline;
+  font-size: large;
+}
+
+.charExperience {
+  display: flex;
+}
+
+.charExp {
+  display: inline;
+  font-size: medium;
+}
+
+.charMax {
+  display: inline;
+  font-size: medium;
+}
+
+.charBar {
+  height: 20px;
+  border-radius: 10px;
+  flex-basis: 100%;
+}
+
+/* .charBarFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: inherit;
+  border-radius: 10px;
+  min-width: 15px;
+} */
