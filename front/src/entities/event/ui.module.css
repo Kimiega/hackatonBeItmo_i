@@ -16,6 +16,10 @@
   color: initial;
 }
 
+.descriptionSection {
+  flex-grow: 1;
+}
+
 .label {
   width: 150px;
 }

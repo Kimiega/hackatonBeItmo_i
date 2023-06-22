@@ -2,6 +2,7 @@ import { BeItmo } from "shared/api/be-itmo/be-itmo-type";
 import styles from "./ui.module.css";
 import beItmoStyles from "shared/ui/styles/be-itmo-type.module.css";
 import defaultBg from "shared/res/mock/background-crop.png";
+import { Achievement } from "./model";
 
 export type AchievementProps = {
   labelUrl: string | null;
@@ -9,7 +10,7 @@ export type AchievementProps = {
   description: string;
   experience: number;
   beItmoType: BeItmo;
-};
+} & Achievement;
 
 export const AchievmentCard = ({
   labelUrl,
